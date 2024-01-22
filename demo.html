@@ -3,37 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Demo of component-name Web Component" />
-    <title>component-name Web Component Demo</title>
+    <meta name="description" content="Demo of instant-photo Web Component" />
+    <title>instant-photo Web Component Demo</title>
 
-    <script type="module" src="component-name.js"></script>
+    <script type="module" src="instant-photo.js"></script>
   </head>
   <body>
     <h2>General usage example</h2>
-    <component-name>
-      <button>Button</button>
-    </component-name>
+    <instant-photo>
+      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="My face">
+    </instant-photo>
     <hr />
-    <h2>Example using a fallback method</h2>
-    <component-name>
-      <button>Button</button>
-      <a href="#">Anchor</a>
-    </component-name>
-    <style>
-      component-name:not(:defined) button,
-      component-name:defined a {
-        display: none;
-      }
-    </style>
+    <h2>Developing</h2>
+    <instant-photo develop>
+      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="My face">
+    </instant-photo>
     <hr />
-    <h2>Example using options or additional fallback method</h2>
-    <component-name attribute="value">
-      <button>Button</button>
-    </component-name>
-    <style>
-      component-name[attribute="value"] {
-        outline: 1px solid red;
-      }
-    </style>
+    <h2>Developing (custom timer)</h2>
+    <instant-photo develop style="--instant-photo-develop-duration: 5s; --instant-photo-develop-delay: 2s;">
+      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="My face">
+    </instant-photo>
   </body>
 </html>
