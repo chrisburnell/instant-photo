@@ -13,18 +13,16 @@ class InstantPhoto extends HTMLElement {
       border-style: solid;
       border-color: var(--instant-photo-border-color, #ededed);
     }
-    img {
+    :host img {
       inline-size: 3.1in;
       block-size: 3.1in;
       display: block;
     }
     @media (prefers-reduced-motion: no-preference) {
-      :host([develop]) {
-        img {
-          opacity: 0;
-          filter: contrast(0%) saturate(50%);
-          animation: fadein var(--instant-photo-develop-duration, 10s) linear var(--instant-photo-develop-delay, 1s) forwards;
-        }
+      :host([develop]) img {
+        opacity: 0;
+        filter: contrast(0%) saturate(50%);
+        animation: fadein var(--instant-photo-develop-duration, 10s) linear var(--instant-photo-develop-delay, 1s) forwards;
       }
     }
     @keyframes fadein {
