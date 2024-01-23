@@ -51,7 +51,7 @@ Make sure you include the `<script>` in your project (choose one of these):
 <!-- 3rd party CDN, not recommended for production use -->
 <script
   type="module"
-  src="https://www.unpkg.com/@chrisburnell/instant-photo@0.0.2/instant-photo.js"
+  src="https://www.unpkg.com/@chrisburnell/instant-photo@0.0.3/instant-photo.js"
 ></script>
 ```
 
@@ -59,7 +59,7 @@ Make sure you include the `<script>` in your project (choose one of these):
 <!-- 3rd party CDN, not recommended for production use -->
 <script
   type="module"
-  src="https://esm.sh/@chrisburnell/instant-photo@0.0.2"
+  src="https://esm.sh/@chrisburnell/instant-photo@0.0.3"
 ></script>
 ```
 

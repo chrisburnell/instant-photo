@@ -6,6 +6,13 @@
     <meta name="description" content="Demo of instant-photo Web Component" />
     <title>instant-photo Web Component Demo</title>
 
+    <style>
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+        }
+      }
+    </style>
     <script type="module" src="instant-photo.js"></script>
   </head>
   <body>
@@ -19,7 +26,7 @@
       <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="My face">
     </instant-photo>
     <hr />
-    <h2>Developing (custom timer)</h2>
+    <h2>Developing with custom develop timing (faster)</h2>
     <instant-photo develop style="--instant-photo-develop-duration: 5s; --instant-photo-develop-delay: 2s;">
       <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="My face">
     </instant-photo>

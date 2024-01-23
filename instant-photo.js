@@ -13,7 +13,7 @@ class InstantPhoto extends HTMLElement {
       border-style: solid;
       border-color: var(--instant-photo-border-color, #ededed);
     }
-    :host img {
+    img {
       inline-size: 3.1in;
       block-size: 3.1in;
       display: block;
@@ -22,6 +22,8 @@ class InstantPhoto extends HTMLElement {
       :host([develop]) img {
         opacity: 0;
         filter: contrast(0%) saturate(50%);
+      }
+      :host([visible]) img {
         animation: fadein var(--instant-photo-develop-duration, 10s) linear var(--instant-photo-develop-delay, 1s) forwards;
       }
     }
@@ -46,39 +48,34 @@ class InstantPhoto extends HTMLElement {
     this.init()
   }
 
-  render() {
-    if (!this.querySelector("img").getAttribute("src")) {
-      return
-    }
-
-    this.src = this.querySelector("img").getAttribute("src")
-    this.alt = this.querySelector("img").getAttribute("alt") || ""
-
-    let content = []
-
-    content.push(`
-      <img src="${this.src}" alt="${this.alt}" loading="lazy" decoding="async">
-    `)
-
-    return content.join("")
-  }
-
   initTemplate() {
     if (this.shadowRoot) {
-      this.shadowRoot.innerHTML = this.render()
       return
     }
 
-    let shadowroot = this.attachShadow({ mode: "open" })
+    this.attachShadow({ mode: "open" })
 
     let sheet = new CSSStyleSheet()
     sheet.replaceSync(InstantPhoto.css)
-    shadowroot.adoptedStyleSheets = [sheet]
+    this.shadowRoot.adoptedStyleSheets = [sheet]
 
     let template = document.createElement("template")
-    template.innerHTML = this.render()
+    template.innerHTML = this.innerHTML
     this.innerHTML = ""
-    shadowroot.appendChild(template.content.cloneNode(true))
+    this.shadowRoot.appendChild(template.content.cloneNode(true))
+
+    const threshold = Math.min(Math.max(Number(this.getAttribute("threshold") || 0.333), 0), 1)
+
+    if (this.hasAttribute("develop")) {
+      const observer = new IntersectionObserver((entries, observer) => {
+        console.log(this, entries[0].intersectionRatio)
+        if (entries[0].intersectionRatio > threshold) {
+          this.setAttribute("visible", true)
+          observer.unobserve(this)
+        }
+      }, { threshold: threshold })
+      observer.observe(this)
+    }
   }
 
   async init() {
