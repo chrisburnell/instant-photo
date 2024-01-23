@@ -2,7 +2,7 @@
 
 A Web Component for presenting an img like an instant photograph.
 
-**[Demo](https://chrisburnell.github.io/component-template/demo.html)** | **[Further reading](https://chrisburnell.com/instant-photo/)**
+**[Demo](https://chrisburnell.github.io/instant-photo/demo.html)** | **[Further reading](https://chrisburnell.com/instant-photo/)**
 
 ## Examples
 
