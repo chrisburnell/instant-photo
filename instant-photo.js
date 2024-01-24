@@ -68,7 +68,6 @@ class InstantPhoto extends HTMLElement {
 
     if (this.hasAttribute("develop")) {
       const observer = new IntersectionObserver((entries, observer) => {
-        console.log(this, entries[0].intersectionRatio)
         if (entries[0].intersectionRatio > threshold) {
           this.setAttribute("visible", true)
           observer.unobserve(this)

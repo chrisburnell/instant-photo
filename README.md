@@ -28,7 +28,7 @@ Example setting the image to develop over time:
 
 ## Features
 
-This Web Component presents an img to make it look like an instant photo. With the `develop` attribute it will “develop” over time.
+This Web Component presents an img to make it look like an instant photo. With the `develop` attribute it will “develop” over time after it becomes slightly visible in the browser viewport.
 
 ## Installation
 
@@ -51,7 +51,7 @@ Make sure you include the `<script>` in your project (choose one of these):
 <!-- 3rd party CDN, not recommended for production use -->
 <script
   type="module"
-  src="https://www.unpkg.com/@chrisburnell/instant-photo@0.0.3/instant-photo.js"
+  src="https://www.unpkg.com/@chrisburnell/instant-photo@1.0.0/instant-photo.js"
 ></script>
 ```
 
@@ -59,7 +59,7 @@ Make sure you include the `<script>` in your project (choose one of these):
 <!-- 3rd party CDN, not recommended for production use -->
 <script
   type="module"
-  src="https://esm.sh/@chrisburnell/instant-photo@0.0.3"
+  src="https://esm.sh/@chrisburnell/instant-photo@1.0.0"
 ></script>
 ```
 
