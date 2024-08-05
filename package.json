@@ -1,26 +1,13 @@
 {
   "name": "@chrisburnell/instant-photo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Web Component for presenting an img like an instant photograph.",
-  "main": "instant-photo.js",
-  "scripts": {
-    "start": "npx http-server ."
-  },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chrisburnell/instant-photo.git"
   },
-  "keywords": [
-    "web",
-    "component",
-    "components",
-    "web components",
-    "custom elements"
-  ],
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+  "homepage": "https://github.com/chrisburnell/instant-photo#readme",
   "bugs": {
     "url": "https://github.com/chrisburnell/instant-photo/issues"
   },
@@ -29,5 +16,36 @@
     "email": "me@chrisburnell.com",
     "url": "https://chrisburnell.com/"
   },
-  "homepage": "https://github.com/chrisburnell/instant-photo#readme"
+  "contributors": [
+    {
+      "name": "Chris Burnell",
+      "email": "me@chrisburnell.com",
+      "url": "https://chrisburnell.com"
+    }
+  ],
+  "funding": [
+    {
+      "type": "buymeacoffee",
+      "url": "https://buymeacoffee.com/chrisburnell"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/chrisburnell"
+    }
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "main": "instant-photo.js",
+  "scripts": {
+    "start": "npx http-server ."
+  },
+  "keywords": [
+    "component",
+    "components",
+    "custom elements",
+    "web",
+    "web components"
+  ]
 }
