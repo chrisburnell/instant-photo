@@ -1,11 +1,11 @@
 class InstantPhoto extends HTMLElement {
-  static register(tagName) {
-    if ("customElements" in window) {
-      customElements.define(tagName || "instant-photo", InstantPhoto)
-    }
-  }
+	static register(tagName) {
+		if ("customElements" in window) {
+			customElements.define(tagName || "instant-photo", InstantPhoto);
+		}
+	}
 
-  static css = `
+	static css = `
     :host {
       background-color: var(--instant-photo-background-color, #121212);
       display: inline-block;
@@ -37,49 +37,55 @@ class InstantPhoto extends HTMLElement {
         filter: contrast(100%) saturate(100%);
       }
     }
-  `
+  `;
 
-  connectedCallback() {
-    if (!this.querySelector("img").getAttribute("src")) {
-      console.error(`Missing \`src\` attribute!`, this)
-      return
-    }
+	connectedCallback() {
+		if (!this.querySelector("img").getAttribute("src")) {
+			console.error(`Missing \`src\` attribute!`, this);
+			return;
+		}
 
-    this.init()
-  }
+		this.init();
+	}
 
-  initTemplate() {
-    if (this.shadowRoot) {
-      return
-    }
+	initTemplate() {
+		if (this.shadowRoot) {
+			return;
+		}
 
-    this.attachShadow({ mode: "open" })
+		this.attachShadow({ mode: "open" });
 
-    let sheet = new CSSStyleSheet()
-    sheet.replaceSync(InstantPhoto.css)
-    this.shadowRoot.adoptedStyleSheets = [sheet]
+		let sheet = new CSSStyleSheet();
+		sheet.replaceSync(InstantPhoto.css);
+		this.shadowRoot.adoptedStyleSheets = [sheet];
 
-    let template = document.createElement("template")
-    template.innerHTML = this.innerHTML
-    this.innerHTML = ""
-    this.shadowRoot.appendChild(template.content.cloneNode(true))
+		let template = document.createElement("template");
+		template.innerHTML = this.innerHTML;
+		this.innerHTML = "";
+		this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    const threshold = Math.min(Math.max(Number(this.getAttribute("threshold") || 0.333), 0), 1)
+		const threshold = Math.min(
+			Math.max(Number(this.getAttribute("threshold") || 0.333), 0),
+			1,
+		);
 
-    if (this.hasAttribute("develop")) {
-      const observer = new IntersectionObserver((entries, observer) => {
-        if (entries[0].intersectionRatio > threshold) {
-          this.setAttribute("visible", true)
-          observer.unobserve(this)
-        }
-      }, { threshold: threshold })
-      observer.observe(this)
-    }
-  }
+		if (this.hasAttribute("develop")) {
+			const observer = new IntersectionObserver(
+				(entries, observer) => {
+					if (entries[0].intersectionRatio > threshold) {
+						this.setAttribute("visible", true);
+						observer.unobserve(this);
+					}
+				},
+				{ threshold: threshold },
+			);
+			observer.observe(this);
+		}
+	}
 
-  async init() {
-    this.initTemplate()
-  }
+	async init() {
+		this.initTemplate();
+	}
 }
 
-InstantPhoto.register()
+InstantPhoto.register();
