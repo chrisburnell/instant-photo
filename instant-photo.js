@@ -12,11 +12,26 @@ class InstantPhoto extends HTMLElement {
       border-width: 0.2in 0.2in 0.9in 0.2in;
       border-style: solid;
       border-color: var(--instant-photo-border-color, #ededed);
+      position: relative;
     }
     img {
       inline-size: 3.1in;
       block-size: 3.1in;
       display: block;
+    }
+    span {
+      color: var(--instant-photo-color, var(--instant-photo-background-color, #121212));
+      display: grid;
+      inline-size: 100%;
+      block-size: 0.9in;
+      display: grid;
+      place-items: center;
+      position: absolute;
+      top: 100%;
+      font-family: var(--instant-photo-font-family, cursive);
+      font-size: var(--instant-photo-font-size, 20px);
+      line-height: var(--instant-photo-line-height, 1.5);
+      text-align: center;
     }
     @media (prefers-reduced-motion: no-preference) {
       :host([develop]) img {
@@ -53,6 +68,13 @@ class InstantPhoto extends HTMLElement {
 			return;
 		}
 
+		// if (!this.hasAttribute("notext")) {
+		const span = document.createElement("span");
+		span.textContent = this.hasAttribute("text")
+			? this.getAttribute("text")
+			: this.querySelector("img").getAttribute("alt");
+		// }
+
 		this.attachShadow({ mode: "open" });
 
 		let sheet = new CSSStyleSheet();
@@ -64,9 +86,13 @@ class InstantPhoto extends HTMLElement {
 		this.innerHTML = "";
 		this.shadowRoot.appendChild(template.content.cloneNode(true));
 
+		if (!this.hasAttribute("notext")) {
+			this.shadowRoot.appendChild(span);
+		}
+
 		const threshold = Math.min(
 			Math.max(Number(this.getAttribute("threshold") || 0.333), 0),
-			1,
+			1
 		);
 
 		if (this.hasAttribute("develop")) {
@@ -77,7 +103,7 @@ class InstantPhoto extends HTMLElement {
 						observer.unobserve(this);
 					}
 				},
-				{ threshold: threshold },
+				{ threshold: threshold }
 			);
 			observer.observe(this);
 		}

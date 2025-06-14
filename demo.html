@@ -18,17 +18,32 @@
   <body>
     <h2>General usage example</h2>
     <instant-photo>
-      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="My face">
+      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="A photograph of Chris Burnell’s face from 2018 (times flies…)">
     </instant-photo>
     <hr />
-    <h2>Developing</h2>
+    <h2>Without text</h2>
+    <instant-photo notext>
+      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="A photograph of Chris Burnell’s face from 2018 (times flies…)">
+    </instant-photo>
+    <hr />
+    <h2>Custom text</h2>
+    <instant-photo text="This is some custom text">
+      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="A photograph of Chris Burnell’s face from 2018 (times flies…)">
+    </instant-photo>
+    <hr />
+    <h2>Custom font family, font size, line height</h2>
+    <instant-photo style="--instant-photo-font-family: sans-serif; --instant-photo-font-size: 1rem; --instant-photo-line-height: 1;">
+      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="A photograph of Chris Burnell’s face from 2018 (times flies…)">
+    </instant-photo>
+    <hr />
+    <h2>Develop</h2>
     <instant-photo develop>
-      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="My face">
+      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="A photograph of Chris Burnell’s face from 2018 (times flies…)">
     </instant-photo>
     <hr />
-    <h2>Developing with custom develop timing (faster)</h2>
+    <h2>Develop with custom develop timing</h2>
     <instant-photo develop style="--instant-photo-develop-duration: 2s; --instant-photo-develop-delay: 1s;">
-      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="My face">
+      <img src="https://chrisburnell.com/images/avatar@4x.jpeg" alt="A photograph of Chris Burnell’s face from 2018 (times flies…)">
     </instant-photo>
   </body>
 </html>
